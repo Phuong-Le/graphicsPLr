@@ -6,7 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of graphicsPLr is to …
+The goal of graphicsPLr is to help with drawing figures in R. Currently
+it provides a tool for assigning colours or shapes to categories. To be
+developed
 
 ## Installation
 
@@ -18,36 +20,20 @@ You can install the development version of graphicsPLr like so:
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 ``` r
 library(graphicsPLr)
-## basic example code
+## give it the categories 
+categories = c('cat', 'dog', 'duck','elephant', 'mouse')
+# can't decide on the colours? get_cols() does it for you
+get_cols(categories)
+#> [1] "#e6194b" "#3cb44b" "#ffe119" "#000000" "#f58231"
+# or define your own colours. If the number of categories is greater than the number of specified colours, it will loop over colours the get the right lengths 
+get_cols(categories, col_options = c('red','blue'))
+#> [1] "red"  "blue" "red"  "blue" "red"
+
+## similarly for shapes 
+get_shapes(categories)
+#> [1] 16  6 15  3 11
+get_shapes(categories, shape_options = c(16,6,15))
+#> [1] 16  6 15 16  6
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
