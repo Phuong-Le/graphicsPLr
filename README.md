@@ -15,7 +15,8 @@ developed
 You can install the development version of graphicsPLr like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github('Phuong-Le/graphicsPLr')
 ```
 
 ## Example
